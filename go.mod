@@ -4,9 +4,9 @@ go 1.20
 
 require (
 	github.com/TerraDharitri/drt-go-bigint v0.0.1
-	github.com/TerraDharitri/drt-go-chain-core v0.0.1
-	github.com/TerraDharitri/drt-go-chain-logger v0.0.1
-	github.com/TerraDharitri/drt-go-chain-vm-common v0.0.1
+	github.com/TerraDharitri/drt-go-chain-core v0.0.3
+	github.com/TerraDharitri/drt-go-chain-logger v0.0.2
+	github.com/TerraDharitri/drt-go-chain-vm-common v0.0.2
 	github.com/TwiN/go-color v1.4.1
 	github.com/stretchr/testify v1.10.0
 	github.com/urfave/cli/v2 v2.27.5
@@ -27,6 +27,6 @@ require (
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/xrash/smetrics v0.0.0-20240521201337-686a1a2994c1 // indirect
 	golang.org/x/sys v0.29.0 // indirect
-	google.golang.org/protobuf v1.36.2 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
