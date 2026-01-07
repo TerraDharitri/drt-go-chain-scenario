@@ -19,6 +19,17 @@ var ErrBuiltinFuncWrapperNotInitialized = errors.New("builtin function not found
 
 var zero = big.NewInt(0)
 
+// ConvertTimeStampSecToMs converts a timestamp from seconds to milliseconds.
+func ConvertTimeStampSecToMs(timeStamp uint64) uint64 {
+	return timeStamp * 1000 // Convert seconds to milliseconds
+
+}
+
+// ConvertTimeStampMsToSeconds converts a timestamp from milliseconds to seconds.
+func ConvertTimeStampMsToSeconds(timeStamp uint64) uint64 {
+	return timeStamp / 1000
+}
+
 // NewAddress provides the address for a new account.
 // It looks up the explicit new address mocks, if none found generates one using a fake but realistic algorithm.
 func (b *MockWorld) NewAddress(creatorAddress []byte, creatorNonce uint64, vmType []byte) ([]byte, error) {
@@ -105,7 +116,15 @@ func (b *MockWorld) LastTimeStamp() uint64 {
 	if b.PreviousBlockInfo == nil {
 		return 0
 	}
-	return b.PreviousBlockInfo.BlockTimestamp
+	return ConvertTimeStampMsToSeconds(b.PreviousBlockInfo.BlockTimestampMs)
+}
+
+// LastTimeStampMs returns the timeStamp in milliseconds from the last committed block
+func (b *MockWorld) LastTimeStampMs() uint64 {
+	if b.PreviousBlockInfo == nil {
+		return 0
+	}
+	return b.PreviousBlockInfo.BlockTimestampMs
 }
 
 // LastRandomSeed returns the random seed from the last committed block
@@ -145,12 +164,63 @@ func (b *MockWorld) CurrentRound() uint64 {
 	return b.CurrentBlockInfo.BlockRound
 }
 
+// RoundTime returns the duration of a round
+func (b *MockWorld) RoundTime() uint64 {
+	return 0
+}
+
+// EpochStartBlockTimeStamp returns the timestamp of the first block of the current epoch
+func (b *MockWorld) EpochStartBlockTimeStamp() uint64 {
+	if b.CurrentBlockInfo == nil {
+		return 0
+	}
+
+	// TODO: add epoch start block field in setState, instead of using current block
+	return ConvertTimeStampMsToSeconds(b.CurrentBlockInfo.BlockTimestampMs)
+}
+
+// EpochStartBlockTimeStampMs returns the timestamp in milliseconds of the first block of the current epoch
+func (b *MockWorld) EpochStartBlockTimeStampMs() uint64 {
+	if b.CurrentBlockInfo == nil {
+		return 0
+	}
+
+	// TODO: add epoch start block field in setState, instead of using current block
+	return b.CurrentBlockInfo.BlockTimestampMs
+}
+
+// EpochStartBlockNonce returns the nonce of the first block of the current epoch
+func (b *MockWorld) EpochStartBlockNonce() uint64 {
+	if b.CurrentBlockInfo == nil {
+		return 0
+	}
+
+	return b.CurrentBlockInfo.BlockNonce
+}
+
+// EpochStartBlockRound returns the round of the first block of the current epoch
+func (b *MockWorld) EpochStartBlockRound() uint64 {
+	if b.CurrentBlockInfo == nil {
+		return 0
+	}
+
+	return b.CurrentBlockInfo.BlockRound
+}
+
 // CurrentTimeStamp return the timestamp from the current block
 func (b *MockWorld) CurrentTimeStamp() uint64 {
 	if b.CurrentBlockInfo == nil {
 		return 0
 	}
-	return b.CurrentBlockInfo.BlockTimestamp
+	return ConvertTimeStampMsToSeconds(b.CurrentBlockInfo.BlockTimestampMs)
+}
+
+// CurrentTimeStampMs returns the timestamp in milliseconds from the current block
+func (b *MockWorld) CurrentTimeStampMs() uint64 {
+	if b.CurrentBlockInfo == nil {
+		return 0
+	}
+	return b.CurrentBlockInfo.BlockTimestampMs
 }
 
 // CurrentRandomSeed returns the random seed from the current header

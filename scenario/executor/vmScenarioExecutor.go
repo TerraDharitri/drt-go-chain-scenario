@@ -66,7 +66,7 @@ func (ae *ScenarioExecutor) InitVM(scenGasSchedule scenmodel.GasSchedule) error 
 	return err
 }
 
-// GetVM yields a reference to the VMOaecutionHandler used.
+// GetVM yields a reference to the VMExecutionHandler used.
 func (ae *ScenarioExecutor) GetVM() vmcommon.VMExecutionHandler {
 	return ae.vm
 }

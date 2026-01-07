@@ -1,6 +1,7 @@
 package worldmock
 
 import (
+	"bytes"
 	"fmt"
 	"math/big"
 
@@ -12,6 +13,8 @@ import (
 	"github.com/TerraDharitri/drt-go-chain-scenario/worldmock/dcdtconvert"
 	vmcommon "github.com/TerraDharitri/drt-go-chain-vm-common"
 )
+
+var REWA_000000_TOKEN_IDENTIFIER = []byte("REWA-000000")
 
 // GetTokenBalance returns the DCDT balance of an account for the given token
 // key (token keys are built from the token identifier using MakeTokenKey).
@@ -52,14 +55,16 @@ func (bf *BuiltinFunctionsWrapper) SetTokenData(address []byte, tokenIdentifier 
 
 // ConvertToBuiltinFunction converts a VM input with a populated DCDT field into a built-in function call.
 func ConvertToBuiltinFunction(tx *vmcommon.ContractCallInput) *vmcommon.ContractCallInput {
-	switch len(tx.DCDTTransfers) {
-	case 0:
+	if len(tx.DCDTTransfers) == 0 {
 		return tx
-	case 1:
-		return convertToDCDTTransfer(tx, tx.DCDTTransfers[0])
-	default:
-		return convertToMultiDCDTTransfer(tx)
 	}
+
+	if len(tx.DCDTTransfers) == 1 && !bytes.Equal(tx.DCDTTransfers[0].DCDTTokenName, REWA_000000_TOKEN_IDENTIFIER) {
+		return convertToDCDTTransfer(tx, tx.DCDTTransfers[0])
+
+	}
+
+	return convertToMultiDCDTTransfer(tx)
 }
 
 func convertToDCDTTransfer(tx *vmcommon.ContractCallInput, dcdtTransfer *vmcommon.DCDTTransfer) *vmcommon.ContractCallInput {
