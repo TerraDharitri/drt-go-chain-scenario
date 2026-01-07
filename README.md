@@ -6,7 +6,7 @@ Blockchain scenarios are interactions with the blockchain, real or imagined.
 
 They help developers write tests and are able to document and replay interactions with smart contracts.
 
-The format is described here: https://docs.dharitri.com/developers/scenario-reference/overview
+The format is described here: https://docs.dharitri.org/developers/scenario-reference/overview
 
 
 ## Scope
