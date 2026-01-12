@@ -1,4 +1,4 @@
-# DharitrI blockchain scenarios: The Go framework
+# Dharitri blockchain scenarios: The Go framework
 
 ## Overview
 
@@ -15,7 +15,7 @@ This Go framework deals with reading, writing, and controlling scenario runners.
 
 Scenario runners are the routines that do something with these scenarios. Think of them as closures that receive the scenario steps.
 
-The main example for such a runner can be found in the VM, here: https://github.com/TerraDharitri/drt-go-chain-vm/tree/master/scenarioexec
+The main example for such a runner can be found in the VM, here: https://github.com/TerraDharitri/drt-go-chain-vm/tree/main/scenarioexec
 
 However, more such runners are conceivable.
 
@@ -23,7 +23,7 @@ To implement such a runner, create an object that implements interface `Scenario
 
 ## Alternate implementation
 
-There is an equivalent Rust implementation here: https://github.com/TerraDharitri/drt-rs-sdk/tree/master/sdk/scenario-format
+There is an equivalent Rust implementation here: https://github.com/TerraDharitri/drt-rs-sdk/tree/main/sdk/scenario-format
 
 The Go implementation (this one) is older and generally tends to be better featured, altough they should be up-to-date with one another now.
 
