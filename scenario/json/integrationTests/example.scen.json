@@ -185,7 +185,6 @@
             },
             "currentBlockInfo": {
                 "blockTimestamp": "511",
-                "blockTimestampMs": "511000",
                 "blockNonce": "522",
                 "blockRound": "533",
                 "blockEpoch": "544"

@@ -1,12 +1,12 @@
 module github.com/TerraDharitri/drt-go-chain-scenario
 
-go 1.23.7
+go 1.23
 
 require (
 	github.com/TerraDharitri/drt-go-bigint v0.0.3
-	github.com/TerraDharitri/drt-go-chain-core v0.1.1
-	github.com/TerraDharitri/drt-go-chain-logger v0.1.1
-	github.com/TerraDharitri/drt-go-chain-vm-common v0.1.1
+	github.com/TerraDharitri/drt-go-chain-core v1.0.1
+	github.com/TerraDharitri/drt-go-chain-logger v1.0.0
+	github.com/TerraDharitri/drt-go-chain-vm-common v1.0.0
 	github.com/TwiN/go-color v1.1.0
 	github.com/stretchr/testify v1.8.1
 	github.com/urfave/cli/v2 v2.27.1

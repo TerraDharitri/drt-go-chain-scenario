@@ -25,12 +25,11 @@ type NewAddressMock struct {
 
 // BlockInfo contains data for the block info hooks
 type BlockInfo struct {
-	BlockTimestamp   JSONUint64
-	BlockTimestampMs JSONUint64
-	BlockNonce       JSONUint64
-	BlockRound       JSONUint64
-	BlockEpoch       JSONUint64
-	BlockRandomSeed  *JSONBytesFromTree
+	BlockTimestamp  JSONUint64
+	BlockNonce      JSONUint64
+	BlockRound      JSONUint64
+	BlockEpoch      JSONUint64
+	BlockRandomSeed *JSONBytesFromTree
 }
 
 // TraceGasStatus defines the trace gas status

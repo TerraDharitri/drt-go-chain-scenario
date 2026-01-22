@@ -1,4 +1,4 @@
-# Dharitri blockchain scenarios: The Go framework
+# DharitrI blockchain scenarios: The Go framework
 
 ## Overview
 
